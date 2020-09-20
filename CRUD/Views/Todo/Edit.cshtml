@@ -1,0 +1,7 @@
+﻿@model CRUD.Controllers.Task
+
+
+<form method="post">
+    <button asp-controller="Todo" asp-action="Edit">Click me!</button>
+    <input type="text" asp-for="Name" value="@Model.Name"/>
+</form>

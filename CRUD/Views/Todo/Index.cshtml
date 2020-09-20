@@ -1,0 +1,41 @@
+﻿@model List<CRUD.Controllers.Task>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@if (ViewData["activeUserRole"].ToString() == Enum.GetName(typeof(Role), 1))
+{
+    <p>HIGH USER</p>
+    @ViewData["activeUserRole"]
+}
+
+@Html.ActionLink("Create", "Create", "Todo");
+<a href="@Url.Action("Create", "Todo")">Create 2</a>
+<a asp-controller="Todo" asp-action="Create">Create 3</a>
+<a asp-controller="Todo" asp-action="Logout">Logout</a>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Is Done</th>
+    </tr>
+
+    @foreach (var task in @Model)
+    {
+        <tr>
+            <td>@task.Id</td>
+            <td>@task.Name</td>
+            <td>@task.IsDone</td>
+            <td><a asp-controller="Todo" asp-action="Edit" asp-route-id="@task.Id">Edit</a></td>
+        </tr>
+    }
+
+</table>
